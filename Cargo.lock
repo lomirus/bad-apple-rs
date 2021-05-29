@@ -3,6 +3,13 @@
 version = 3
 
 [[package]]
+name = "bad-apple-rs"
+version = "0.1.0"
+dependencies = [
+ "crossterm",
+]
+
+[[package]]
 name = "bitflags"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -141,13 +148,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "742739e41cd49414de871ea5e549afb7e2a3ac77b589bcbebe8c82fab37147fc"
 dependencies = [
  "bitflags",
-]
-
-[[package]]
-name = "rust-test"
-version = "0.1.0"
-dependencies = [
- "crossterm",
 ]
 
 [[package]]
