@@ -11,12 +11,16 @@ Get latest release [here](https://github.com/lomirus/bad-apple-rs/releases).
 |[bad-apple-rs.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.0.0/bad-apple-rs.exe)|also runs on linux|
 |[Source Code (Zip)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.0.0.zip)||
 |[Source Code (tar.gz)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.0.0.tar.gz)||
-## Run From Source
+
+## Build From Source
 
 ```bash
 git clone git@github.com:lomirus/bad-apple-rs.git
 cd bad-apple-rs
-cargo run
+# generate `data.rs` from `source.rs`
+deno run -A preload.ts
+# compile the project in to executable file in release mode
+cargo build --release
 ```
 
 ## Screen Requirements
