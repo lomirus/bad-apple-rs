@@ -2,7 +2,16 @@
 
 Watch in Bilibili: [[東方] 用 Rust 的方式在 Windows Terminal 打开 Bad Apple!!](https://www.bilibili.com/video/BV1mo4y117Nb/)
 
-# Run
+## Download
+
+Get latest release [here](https://github.com/lomirus/bad-apple-rs/releases).
+
+|Asset|Note|
+|---|---|
+|[bad-apple-rs.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.0.0/bad-apple-rs.exe)|also runs on linux|
+|[Source Code (Zip)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.0.0.zip)||
+|[Source Code (tar.gz)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.0.0.tar.gz)||
+## Run From Source
 
 ```bash
 git clone git@github.com:lomirus/bad-apple-rs.git
@@ -10,7 +19,7 @@ cd bad-apple-rs
 cargo run
 ```
 
-# Screen Requirements
+## Screen Requirements
 
 - WIDHT >= 101 Chars
 - HEIGHT >= 44 Chars
