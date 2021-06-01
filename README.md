@@ -17,8 +17,8 @@ Get latest release [here](https://github.com/lomirus/bad-apple-rs/releases).
 ```bash
 git clone git@github.com:lomirus/bad-apple-rs.git
 cd bad-apple-rs
-# generate `data.rs` from `source.rs`
-deno run -A preload.ts
+# generate `data.rs` from `source.txt`
+deno run --allow-read --allow-write preload.ts
 # compile the project in to executable file in release mode
 cargo build --release
 ```
