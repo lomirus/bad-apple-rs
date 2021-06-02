@@ -8,9 +8,9 @@ Get latest release [here](https://github.com/lomirus/bad-apple-rs/releases).
 
 |Asset|Note|
 |---|---|
-|[bad-apple-rs.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.0.0/bad-apple-rs.exe)|also runs on linux|
-|[Source Code (Zip)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.0.0.zip)||
-|[Source Code (tar.gz)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.0.0.tar.gz)||
+|[bad-apple-rs.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.1.0/bad-apple-rs.exe)|also runs on linux|
+|[Source Code (Zip)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.1.0.zip)||
+|[Source Code (tar.gz)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.1.0.tar.gz)||
 
 ## Build From Source
 
