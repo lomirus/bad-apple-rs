@@ -31,6 +31,6 @@ fn main() {
             }
         }
         stdout.flush().unwrap();
-        sleep(Duration::from_millis(50));
+        sleep(Duration::from_millis(1000 / FRAMES));
     }
 }
