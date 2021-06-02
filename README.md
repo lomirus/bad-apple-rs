@@ -23,9 +23,8 @@ deno run --allow-read --allow-write preload.ts
 cargo build --release
 ```
 
-## Screen Requirements
+## Video Info
 
-- WIDHT >= 101 Chars
-- HEIGHT >= 44 Chars
-
-Succeed in Windows Terminal full screen mode with default configurations in Windows 10, 1920x1080 Resolution, 125% Scale.
+- Width : 128 Chars
+- Height : 48 Chars
+- Frame Rate : 24 FPS
