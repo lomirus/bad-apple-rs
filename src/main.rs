@@ -35,7 +35,6 @@ fn main() {
         stdout.flush().unwrap();
         sleep(Duration::from_millis(1000 / FPS));
     }
-    println!("{}", data_to_str(12));
 }
 
 fn get_padding() -> (u16, u16) {
