@@ -1,5 +1,10 @@
 mod data;
-use crossterm::{cursor::MoveTo, style::Print, terminal::{self, Clear, ClearType}, QueueableCommand};
+use crossterm::{
+    cursor::MoveTo,
+    style::Print,
+    terminal::{self, Clear, ClearType},
+    QueueableCommand,
+};
 use std::io::{stdout, Write};
 use std::thread::sleep;
 use std::time::{Duration, Instant};
@@ -10,29 +15,18 @@ const WIDTH: usize = data::DATA[0][0].len();
 const FPS: u64 = 24;
 
 fn main() {
-    let mut stdout = stdout();
     let (left, top) = get_padding();
-    
+    let mut stdout = stdout();
+
     stdout.queue(Clear(ClearType::All)).unwrap();
-    for row in 0..HEIGHT {
-        stdout.queue(MoveTo(left, top + row as u16)).unwrap();
-        for col in 0..WIDTH {
-            stdout
-                .queue(Print(data_to_str(data::DATA[0][row][col])))
-                .unwrap();
-        }
-    }
     let start = Instant::now();
-    for i in 1..FRAMES {
+    for i in 0..FRAMES {
         for row in 0..HEIGHT {
+            stdout.queue(MoveTo(left, top + row as u16)).unwrap();
             for col in 0..WIDTH {
-                if data::DATA[i - 1][row][col] != data::DATA[i][row][col] {
-                    stdout
-                        .queue(MoveTo(left + col as u16 * 8, top + row as u16))
-                        .unwrap()
-                        .queue(Print(data_to_str(data::DATA[i][row][col])))
-                        .unwrap();
-                }
+                stdout
+                    .queue(Print(data_to_str(data::DATA[i][row][col])))
+                    .unwrap();
             }
         }
         stdout.flush().unwrap();
