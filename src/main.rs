@@ -1,6 +1,6 @@
 mod data;
 use crossterm::{
-    cursor::MoveTo,
+    cursor::{self, MoveTo},
     style::Print,
     terminal::{self, Clear, ClearType},
     QueueableCommand,
@@ -18,7 +18,11 @@ fn main() {
     let (left, top) = get_padding();
     let mut stdout = stdout();
 
-    stdout.queue(Clear(ClearType::All)).unwrap();
+    stdout
+        .queue(Clear(ClearType::All))
+        .unwrap()
+        .queue(cursor::Hide)
+        .unwrap();
     let start = Instant::now();
     for i in 0..FRAMES {
         for row in 0..HEIGHT {
