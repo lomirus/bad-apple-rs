@@ -1,8 +1,8 @@
 mod data;
-use crossterm::{cursor::MoveTo, style::Print, QueueableCommand, terminal};
+use crossterm::{cursor::MoveTo, style::Print, terminal, QueueableCommand};
 use std::io::{stdout, Write};
 use std::thread::sleep;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 
 const FRAMES: usize = data::DATA.len();
 const HEIGHT: usize = data::DATA[0].len();
@@ -20,6 +20,7 @@ fn main() {
                 .unwrap();
         }
     }
+    let start = Instant::now();
     for i in 1..FRAMES {
         for row in 0..HEIGHT {
             for col in 0..WIDTH {
@@ -33,7 +34,9 @@ fn main() {
             }
         }
         stdout.flush().unwrap();
-        sleep(Duration::from_millis(1000 / FPS));
+        while (start.elapsed().as_millis() as f64) < (1000 as f64) / (FPS as f64) * (i as f64) {
+            sleep(Duration::from_millis(10));
+        }
     }
 }
 
