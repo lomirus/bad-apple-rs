@@ -4,7 +4,6 @@ const decoder = new TextDecoder("utf-8");
 const binary = await Deno.readFile("src/source.txt");
 const source = decoder.decode(binary);
 
-getSize(source);
 const [FRAMES, ROWS, COLS] = getSize(source);
 
 let data = source
