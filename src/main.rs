@@ -1,5 +1,5 @@
 mod data;
-use crossterm::{cursor::MoveTo, style::Print, terminal, QueueableCommand};
+use crossterm::{cursor::MoveTo, style::Print, terminal::{self, Clear, ClearType}, QueueableCommand};
 use std::io::{stdout, Write};
 use std::thread::sleep;
 use std::time::{Duration, Instant};
@@ -12,6 +12,8 @@ const FPS: u64 = 24;
 fn main() {
     let mut stdout = stdout();
     let (left, top) = get_padding();
+    
+    stdout.queue(Clear(ClearType::All)).unwrap();
     for row in 0..HEIGHT {
         stdout.queue(MoveTo(left, top + row as u16)).unwrap();
         for col in 0..WIDTH {
