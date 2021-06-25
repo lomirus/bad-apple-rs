@@ -8,8 +8,8 @@ Get latest release [here](https://github.com/lomirus/bad-apple-rs/releases).
 
 |Asset|Note|
 |---|---|
-|[bad-apple-rs-windows.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.3.0/bad-apple-rs-windows.exe)|Compiled on Windows 10 x86_64|
-|[bad-apple-rs-linux](https://github.com/lomirus/bad-apple-rs/releases/download/v1.3.0/bad-apple-rs-linux)|Compiled on Manjaro x86_64|
+|[bad-apple-rs-windows.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.3.0/bad-apple-rs-windows.exe)|x86_64-pc-windows-msvc|
+|[bad-apple-rs-linux](https://github.com/lomirus/bad-apple-rs/releases/download/v1.3.0/bad-apple-rs-linux)|x86_64-unknown-linux-gnu|
 |[Source Code (Zip)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.3.0.zip)||
 |[Source Code (tar.gz)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.3.0.tar.gz)||
 
