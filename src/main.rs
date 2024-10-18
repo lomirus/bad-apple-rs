@@ -1,4 +1,3 @@
-mod data;
 use crossterm::{
     cursor::{self, MoveTo},
     style::Print,
@@ -6,15 +5,22 @@ use crossterm::{
     QueueableCommand,
 };
 use std::io::{stdout, Write};
+use std::iter::zip;
 use std::thread::sleep;
 use std::time::{Duration, Instant};
 
-const FRAMES: usize = data::DATA.len();
-const HEIGHT: usize = data::DATA[0].len();
-const WIDTH: usize = data::DATA[0][0].len();
+const FRAMES: usize = 5258;         // This is the known frame count
+const HEIGHT: usize = 48;
+const WIDTH: usize = 16;
 const FPS: u64 = 24;
 
 fn main() {
+    let data = include_bytes!("source.bin");
+    debug_assert!(*data.iter().max().unwrap() == 255);
+    let lines: Vec<_> = data.chunks_exact(WIDTH).collect::<Vec<_>>();
+    let frames = lines.chunks_exact(HEIGHT);
+    debug_assert_eq!(frames.len(), FRAMES);         // Verify frame count
+
     let (left, top) = get_padding();
     let mut stdout = stdout();
 
@@ -23,21 +29,34 @@ fn main() {
         .unwrap()
         .queue(cursor::Hide)
         .unwrap();
+
     let start = Instant::now();
-    for i in 0..FRAMES {
-        for row in 0..HEIGHT {
-            stdout.queue(MoveTo(left, top + row as u16)).unwrap();
-            for col in 0..WIDTH {
+    let mut c: usize = 0;
+    for frame in frames {
+        for (i, row) in zip(0.., frame) {
+            stdout.queue(MoveTo(left, top + i)).unwrap();
+            for n in row.iter() {
                 stdout
-                    .queue(Print(data_to_str(data::DATA[i][row][col])))
+                    .queue(Print(data_to_str(*n)))
                     .unwrap();
             }
         }
         stdout.flush().unwrap();
-        while (start.elapsed().as_millis() as f64) < (1000 as f64) / (FPS as f64) * (i as f64) {
+        while (start.elapsed().as_millis() as f64) < 1000_f64 / (FPS as f64) * (c as f64) {
             sleep(Duration::from_millis(10));
         }
+        c += 1;
     }
+
+    stdout
+        .queue(Clear(ClearType::All))
+        .unwrap()
+        .queue(MoveTo(0, 0))
+        .unwrap()
+        .queue(Print(format!("Played {} frames in {} secs.\n", c, (Instant::now() - start).as_secs())))
+        .unwrap()
+        .queue(cursor::Show)
+        .unwrap();
 }
 
 fn get_padding() -> (u16, u16) {
