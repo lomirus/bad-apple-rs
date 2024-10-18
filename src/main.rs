@@ -6,6 +6,8 @@ use crossterm::{
 };
 use std::io::{stdout, Write};
 use std::iter::zip;
+use std::sync::Arc;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread::sleep;
 use std::time::{Duration, Instant};
 
@@ -20,6 +22,10 @@ fn main() {
     let lines: Vec<_> = data.chunks_exact(WIDTH).collect::<Vec<_>>();
     let frames = lines.chunks_exact(HEIGHT);
     debug_assert_eq!(frames.len(), FRAMES);         // Verify frame count
+
+    let running = Arc::new(AtomicBool::new(true));
+    let r = running.clone();
+    ctrlc::set_handler(move || r.store(false, Ordering::Relaxed)).unwrap();
 
     let (left, top) = get_padding();
     let mut stdout = stdout();
@@ -46,6 +52,7 @@ fn main() {
             sleep(Duration::from_millis(10));
         }
         c += 1;
+        if !running.load(Ordering::Relaxed) { break; };
     }
 
     stdout
