@@ -7,6 +7,10 @@ edition = "2021"
 [dependencies]
 crossterm = "0.28.1"
 ctrlc = "3.4.5"
+liblzma = "0.3.4"
+
+[build-dependencies]
+liblzma = "0.3.4"
 
 [profile.release]
 lto = true

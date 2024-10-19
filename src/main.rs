@@ -10,6 +10,7 @@ use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread::sleep;
 use std::time::{Duration, Instant};
+use liblzma::write::XzDecoder;
 
 const FRAMES: usize = 5258;         // This is the known frame count
 const HEIGHT: usize = 48;
@@ -17,8 +18,11 @@ const WIDTH: usize = 16;
 const FPS: u64 = 24;
 
 fn main() {
-    let data = include_bytes!("source.bin");
+    let data_compressed = include_bytes!("source.bin");
+    let mut data = Vec::<u8>::new();
+    XzDecoder::new(&mut data).write_all(data_compressed).unwrap();
     debug_assert!(*data.iter().max().unwrap() == 255);
+
     let lines: Vec<_> = data.chunks_exact(WIDTH).collect::<Vec<_>>();
     let frames = lines.chunks_exact(HEIGHT);
     debug_assert_eq!(frames.len(), FRAMES);         // Verify frame count

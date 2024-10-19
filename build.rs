@@ -1,5 +1,6 @@
 use std::fs::OpenOptions;
 use std::io::Write;
+use liblzma::write::XzEncoder;
 
 fn main() {
     let source = std::str::from_utf8(include_bytes!("src/source.txt")).unwrap();
@@ -27,12 +28,14 @@ fn main() {
         .flatten()
         .collect();
 
-    let mut file = OpenOptions::new()
+    let file = OpenOptions::new()
         .create(true)
         .truncate(true)
         .write(true)
         .open("src/source.bin")
         .unwrap();
 
-    file.write_all(&data).unwrap();
+    XzEncoder::new(file, 9)
+        .write_all(&data)
+        .unwrap();
 }
