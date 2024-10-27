@@ -4,12 +4,12 @@ use crossterm::{
     terminal::{self, Clear, ClearType},
     QueueableCommand,
 };
+use liblzma::write::XzDecoder;
 use std::io::{stdout, Write};
-use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
 use std::thread::sleep;
 use std::time::{Duration, Instant};
-use liblzma::write::XzDecoder;
 
 const FRAMES: usize = 5258;         // This is the known frame count
 const HEIGHT: usize = 48;

@@ -1,6 +1,6 @@
+use liblzma::write::XzEncoder;
 use std::fs::OpenOptions;
 use std::io::Write;
-use liblzma::write::XzEncoder;
 
 fn main() {
     let source = std::str::from_utf8(include_bytes!("src/source.txt")).unwrap();
