@@ -5,7 +5,6 @@ use crossterm::{
     QueueableCommand,
 };
 use std::io::{stdout, Write};
-use std::iter::zip;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread::sleep;
@@ -43,8 +42,8 @@ fn main() {
     let start = Instant::now();
     let mut c: usize = 0;
     for frame in frames {
-        for (i, row) in zip(0.., frame) {
-            stdout.queue(MoveTo(left, top + i)).unwrap();
+        for (i, row) in frame.iter().enumerate() {
+            stdout.queue(MoveTo(left, top + (i as u16))).unwrap();
             for n in row.iter() {
                 stdout
                     .queue(Print(data_to_str(*n)))
