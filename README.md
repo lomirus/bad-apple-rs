@@ -2,17 +2,6 @@
 
 Watch in Bilibili: [[東方] 用 Rust 的方式在 Windows Terminal 打开 Bad Apple!!](https://www.bilibili.com/video/BV1mo4y117Nb/)
 
-## Download
-
-Get latest release [here](https://github.com/lomirus/bad-apple-rs/releases).
-
-|Asset|Note|
-|---|---|
-|[bad-apple-rs-windows.exe](https://github.com/lomirus/bad-apple-rs/releases/download/v1.3.0/bad-apple-rs-windows.exe)|x86_64-pc-windows-msvc|
-|[bad-apple-rs-linux](https://github.com/lomirus/bad-apple-rs/releases/download/v1.3.0/bad-apple-rs-linux)|x86_64-unknown-linux-gnu|
-|[Source Code (Zip)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.3.0.zip)||
-|[Source Code (tar.gz)](https://github.com/lomirus/bad-apple-rs/archive/refs/tags/v1.3.0.tar.gz)||
-
 ## Build From Source
 
 ```bash
