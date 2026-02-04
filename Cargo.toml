@@ -2,15 +2,15 @@
 name = "bad-apple-rs"
 version = "1.4.0"
 authors = ["Lomirus <lomirus@qq.com>"]
-edition = "2021"
+edition = "2024"
 
 [dependencies]
-crossterm = "0.28.1"
-ctrlc = "3.4.5"
-liblzma = "0.3.4"
+crossterm = "0.29.0"
+ctrlc = "3.5.1"
+liblzma = "0.4.5"
 
 [build-dependencies]
-liblzma = "0.3.4"
+liblzma = "0.4.5"
 
 [profile.release]
 lto = true
