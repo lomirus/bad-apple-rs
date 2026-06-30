@@ -2,3 +2,5 @@
 /src/data.rs
 /src/source.bin
 /result
+.direnv/
+.envrc
