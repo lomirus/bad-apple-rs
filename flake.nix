@@ -13,12 +13,20 @@
         pkgs = pkgsFor.${system};
         manifest = (pkgs.lib.importTOML ./Cargo.toml).package;
       in {
-        default = pkgs.rustPlatform.buildRustPackage rec {
+        default = pkgs.rustPlatform.buildRustPackage {
           pname = manifest.name;
           version = manifest.version;
 
           cargoLock.lockFile = ./Cargo.lock;
           src = pkgs.lib.cleanSource ./.;
+        };
+      });
+
+      devShells = forAllSystems (system: let
+        pkgs = pkgsFor.${system};
+      in {
+        default = pkgs.mkShell {
+          packages = [ pkgs.cargo pkgs.rustc ];
         };
       });
     };
